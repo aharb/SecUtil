@@ -1,0 +1,40 @@
+{
+  "name": "SecUtil",
+  "version": "1.0.0",
+  "description": "Small framework that provides you the security weapons",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aharb/SecUtil.git"
+  },
+  "dependencies": {
+    "jwt-simple": ">= 0.2.0",
+    "logging": "*",
+    "jsonschema": ">=1.0.0",
+    "forever-monitor": "1.5.2",
+    "winston": "0.9.0"
+  },
+  "keywords": [
+    "XSS",
+    "CSRF",
+    "Logging",
+    "Encrypt",
+    "Decrypt",
+    "Hashing",
+    "Escape",
+    "Html",
+    "Encode",
+    "CSS",
+    "Encode",
+    "JavaScript"
+  ],
+  "author": "Ahmad Harb <ahmed.a.harb@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aharb/SecUtil/issues"
+  },
+  "homepage": "https://github.com/aharb/SecUtil"
+}
