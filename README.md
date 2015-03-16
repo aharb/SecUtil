@@ -245,3 +245,5 @@ The X-XSS-Protection HTTP header is a simple protection against the cross site s
 ## Release History
 
 * 1.0.0 Initial release
+
+#### Author: [Ahmad Harb](http://jo.linkedin.com/in/harb89/en)

@@ -11,9 +11,9 @@
     "url": "https://github.com/aharb/SecUtil.git"
   },
   "dependencies": {
-    "jwt-simple": ">= 0.2.0",
+    "jwt-simple": "0.2.0",
     "logging": "*",
-    "jsonschema": ">=1.0.0",
+    "jsonschema": "1.0.0",
     "forever-monitor": "1.5.2",
     "winston": "0.9.0"
   },
