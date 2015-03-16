@@ -181,17 +181,66 @@ The most common web application security flaw is the failure to correctly valida
       
 ```
 
+## Logging in SecUtil
+
+Logging is very useful to have in the application. From the security perspective, logs can detect the attacks, also can detect if there is a misuse for the application, moreover logging can detect the errors to enhance the availability of the service.  
+
+SecUtil provides the APIs for custom logging in Node.js applications. Custom logging should be consistent within the application and generate log entries that could be logged on file, database, console, or sending emails. 
+
+
+### Console Logging 
+
+SecUtil provides the developers to log there entries on the console. The difference between the built in logging using console.log and using the console logging API in SecUtil, is that the logging through SecUtil displays the cluster worked Id,  print the log entries in colors, display the filename that logged the entry,  and display the timestamp of the log.
+
+The console logging API in SecUtil wrapped over the logging module, and exports these module functionalities through the API consoleLog.
+
+```js
+
+  	var secUtil = require("secutil");
+
+	secUtil.consoleLog('hello world');
+
+	secUtil.consoleLog('counter', 123);
+
+	secUtil.consoleLog(1, "2", [ 3, 4 ], { 5: 6 }, function() { return 7; }); 
+      
+```
+
+### Winston Logging 
+
+SecUtil provides the ability for Node.js developers to log and save the entries on storage devices that could be on a local file or a remote database by wrapping winston module through SecUtil’s APIs.
+
+```js
+
+  	var secUtil = require("secutil");
+
+	secUtil.winstonLog.add(secUtil.winstonLog.transports.File, { filename: 'somefile.log' });
+	secUtil.winstonLog.remove(secUtil.winstonLog.transports.Console);
+  
+	secUtil.winstonLog.log('info', 'Hello distributed log files!');
+
+```
+
+## XSS Protection Header in SecUtil
+
+The X-XSS-Protection HTTP header is a simple protection against the cross site scripting attack. It was originally adopted by Microsoft but Chrome has since adopted it as well. SecUtil provides the API to protect Node.js application from XSS by setting X-XSS-Protection in the header response.
+
+```js
+
+  	var secUtil = require("secutil");
+
+	app.use(secUtil.xssFilter());
+
+```
+
+
 
 ## Tests
 
 ```shell
-   npm test
+   node test\index.js
 ```
 
-## Contributing
-
-In lieu of a formal styleguide, take care to maintain the existing coding style.
-Add unit tests for any new or changed functionality. Lint and test your code.
 
 ## Release History
 
