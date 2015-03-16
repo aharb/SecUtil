@@ -19,7 +19,7 @@
   },
   "keywords": [
     "XSS",
-    "CSRF",
+    "Code injection",
     "Logging",
     "Encrypt",
     "Decrypt",
@@ -29,7 +29,8 @@
     "Encode",
     "CSS",
     "Encode",
-    "JavaScript"
+    "JavaScript",
+    "forever-monitor"
   ],
   "author": "Ahmad Harb <ahmed.a.harb@gmail.com>",
   "license": "MIT",
