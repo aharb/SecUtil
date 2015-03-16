@@ -17,19 +17,19 @@ SecUtil intended to exist as a security middleware that contains as much as of t
 
 ## APIs
 
-* __Generate Tokens
-* __Data Encryption
-* __Data Decryption.
-* __Escape HTML.
-* __Escape HTML Attributes.
-* __Encode JavaScript Data.
-* __Encode JavaScript String.
-* __Encode CSS String.
-* __Forever Module.
-* __Schema Validator.
-* __Console Logging.
-* __Winston Logging
-* __XSS Protection Header.
+** Generate Tokens.
+** Data Encryption.
+** Data Decryption.
+** Escape HTML.
+** Escape HTML Attributes.
+** Encode JavaScript Data.
+** Encode JavaScript String.
+** Encode CSS String.
+** Forever Module.
+** Schema Validator.
+** Console Logging.
+** Winston Logging
+** XSS Protection Header.
 
 
 
