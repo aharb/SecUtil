@@ -37,7 +37,7 @@ SecUtil intended to exist as a security middleware that contains as much as of t
   var secUtil = require("secutil");
       
 ```
-## Data Hiding 
+## Data Hiding APIs
 
 The implementation of the data hiding functionalities depend on two modules. The first module is Crypto which is provided by default on Node.js. The second is jwt-simple, which is a popular module that wraps Crypto’s APIs to encode and decode data, in simple calls.
 
@@ -79,7 +79,7 @@ SecUtil provide three simple APIs for the encoding and decoding:
 ```
 ##  Code Injection Prevention APIs
 
- SecUtil provides APIs to mitigate from the code injection attacks that target Node.js web applications, as  OWSAP introduced to prevent form XSS attack, SecUtil implemented these techniques and exported it through its APIs.
+ SecUtil provides APIs to mitigate from the code injection attacks that target Node.js web applications, as  OWSAP introduced to prevent form XSS attack, SecUtil implemented these techniques and exported them through its APIs.
 
 SecUtil provides the following APIs to mitigate code injection attacks: 
 
@@ -106,6 +106,28 @@ SecUtil provides the following APIs to mitigate code injection attacks:
 	console.log("Encode CSS string: " + data);
       
 ```
+## Exporting Forever Module in SecUtil
+
+SecUtil considers the reliability of Node.js web application by exporting forever-monitor module APIs. This module is responsible to keep the service alive and keeps the application running in the production environment.
+
+```js
+
+  	var secUtil = require("secutil");
+
+  	var child = new (secUtil.forever.Monitor)('index.js', {
+    max: 3,
+    silent: true,
+    args: []
+  	});
+
+  child.on('exit', function () {
+    console.log('your-filename.js has exited after 3 restarts');
+  });
+
+  child.start(); 
+      
+```
+
 
 ## Tests
 
