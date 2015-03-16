@@ -39,6 +39,8 @@ SecUtil intended to exist as a security middleware that contains as much as of t
 ```
 ## Data Hiding 
 
+The implementation of the data hiding functionalities depend on two modules. The first module is Crypto which is provided by default on Node.js. The second is jwt-simple, which is a popular module that wraps Crypto’s APIs to encode and decode data, in simple calls.
+
 The implementation of the Token API in SecUtil supports the following cryptographic hashing algorithms: MD5, SHA1, and SHA256. Furthermore the encryption APIs supports the cryptographic algorithms: AES256, HS512, and RS256. 
 
 SecUtil provide three simple APIs for the encoding and decoding:
@@ -73,6 +75,35 @@ SecUtil provide three simple APIs for the encoding and decoding:
 
 	var data = secUtil.decrypt("HS512","key",data);
 	console.log("Decrypt (HS512): " + data);
+      
+```
+##  Code Injection Prevention APIs
+
+ SecUtil provides APIs to mitigate from the code injection attacks that target Node.js web applications, as  OWSAP introduced to prevent form XSS attack, SecUtil implemented these techniques and exported it through its APIs.
+
+SecUtil provides the following APIs to mitigate code injection attacks: 
+
+1.	escapeHTML: HTML string should be passed as parameter.
+2.	escapeHTMLAttribute: attribute values should be passed as string parameter.
+3.	encodeJavaScriptString: JavaScript string should be passed as parameter.
+4.	encodeJavaScriptData: JavaScript object should be passed as parameter.
+5.	encodeCSSString: CSS string should be passed as parameter.
+
+```js
+
+  	var secUtil = require("secutil");
+  
+	var data = secUtil.escapeHTML("&<>\"'/");
+	console.log("Escape html:&<>\"'/ with: " + data);
+
+	var data = secUtil.escapeHTMLAttribute("\n\t\"");
+	console.log("Escape html attributes :&<>\"'/ with: " + data);
+
+	var data = secUtil.encodeJavaScriptString("\n\t\"\u2028\u2029");
+	console.log("Encode javascript string: " + data);
+
+	var data = secUtil.encodeCSSString("\n\t\"");
+	console.log("Encode CSS string: " + data);
       
 ```
 
