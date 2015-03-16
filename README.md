@@ -128,6 +128,59 @@ SecUtil considers the reliability of Node.js web application by exporting foreve
       
 ```
 
+## Validations API in SecUtil
+
+The most common web application security flaw is the failure to correctly validate input from the users. This section discussed the API that SecUtil provides to add the validations to Node.js application, SecUtil wraps jsonschema module and exports the validator object through its APIs.
+
+```js
+	var secUtil = require("secutil");
+
+	var Validator = secUtil.validator;
+	var v = new Validator();
+ 
+  // Address, to be embedded on Person 
+  var addressSchema = {
+    "id": "/SimpleAddress",
+    "type": "object",
+    "properties": {
+      "lines": {
+        "type": "array",
+        "items": {"type": "string"}
+      },
+      "zip": {"type": "string"},
+      "city": {"type": "string"},
+      "country": {"type": "string", "required": true}
+    }
+  };
+ 
+  // Person 
+  var schema = {
+    "id": "/SimplePerson",
+    "type": "object",
+    "properties": {
+      "name": {"type": "string"},
+      "address": {"$ref": "/SimpleAddress"},
+      "votes": {"type": "integer", "minimum": 1}
+    }
+  };
+ 
+  var p = {
+    "name": "Barack Obama",
+    "address": {
+      "lines": [ "1600 Pennsylvania Avenue Northwest" ],
+      "zip": "DC 20500",
+      "city": "Washington",
+      "country": "USA"
+    },
+    "votes": "2"
+  };
+
+
+ v.addSchema(addressSchema, '/SimpleAddress');
+ secUtil.consoleLog(v.validate(p, schema).valid);
+      
+```
+
 
 ## Tests
 
