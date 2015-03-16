@@ -1,6 +1,6 @@
 {
   "name": "secutil",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Security middleware in Node.js provides you the best pracitices of the security weapons",
   "main": "index.js",
   "scripts": {
